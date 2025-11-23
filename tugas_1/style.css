@@ -1,0 +1,237 @@
+/* --- SETUP & GLOBAL [cite: 26] --- */
+:root {
+    --primary-color: #2c3e50;
+    --accent-color: #e67e22; /* Warna oranye cerah untuk action */
+    --bg-light: #f4f4f4;
+    --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-main);
+    color: #333;
+    background-color: #fff;
+    line-height: 1.6;
+}
+
+a { text-decoration: none; color: inherit; }
+ul { list-style: none; }
+
+/* --- HEADER & NAVIGASI --- */
+nav {
+    position: sticky;
+    top: 0;
+    background: #fff;
+    z-index: 1000;
+    padding: 15px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.logo span { color: var(--accent-color); }
+
+/* Menu horizontal sesuai PDF [cite: 14] */
+.nav-menu {
+    display: flex;
+    gap: 20px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.nav-menu li a:hover {
+    color: var(--accent-color);
+    border-bottom: 2px solid var(--accent-color);
+}
+
+.nav-icons {
+    font-size: 18px;
+    gap: 15px;
+    display: flex;
+}
+
+/* --- BANNER KOLASE (Collage)  --- */
+.banner-collage {
+    position: relative;
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 0 20px;
+}
+
+.banner-text {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.banner-text h1 {
+    font-size: 32px;
+    color: var(--primary-color);
+}
+
+/* Menggunakan CSS Grid untuk membuat kolase foto */
+.collage-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr; /* Kolom kiri lebih besar */
+    grid-template-rows: 200px 200px;
+    gap: 10px;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.collage-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s;
+}
+
+.collage-item img:hover {
+    transform: scale(1.05);
+}
+
+/* Item pertama (Main) mengambil 2 baris penuh di kolom kiri */
+.item-main {
+    grid-column: 1 / 2;
+    grid-row: 1 / 3;
+}
+
+/* --- KONTEN PAKET WISATA [cite: 27] --- */
+.section {
+    padding: 40px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 28px;
+    margin-bottom: 30px;
+    color: var(--primary-color);
+    border-bottom: 3px solid var(--accent-color);
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+/* Grid Responsif untuk Paket Wisata */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+}
+
+.card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card-img {
+    height: 200px;
+    width: 100%;
+    object-fit: cover;
+}
+
+.card-body {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.card-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #2c3e50;
+}
+
+/* Styling khusus untuk info tanggal/harga [cite: 20, 21] */
+.card-info {
+    font-size: 13px;
+    color: #777;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.card-desc {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 15px;
+    flex-grow: 1;
+}
+
+.card-price {
+    font-size: 16px;
+    color: var(--accent-color);
+    font-weight: bold;
+    margin-top: auto;
+    background: #fff3e0;
+    padding: 8px;
+    text-align: center;
+    border-radius: 5px;
+}
+
+/* --- VIDEO SECTION  --- */
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%; /* Aspect Ratio 16:9 */
+    height: 0;
+    overflow: hidden;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* --- FOOTER --- */
+footer {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 30px;
+    text-align: center;
+    margin-top: 50px;
+}
+
+/* --- RESPONSIVE MOBILE [cite: 40] --- */
+@media (max-width: 768px) {
+    .nav-menu { 
+        display: none; /* Sederhana untuk mobile */
+    }
+    
+    .collage-grid {
+        grid-template-columns: 1fr; /* Tumpuk ke bawah di HP */
+        grid-template-rows: 200px 150px 150px;
+    }
+    
+    .item-main {
+        grid-column: auto;
+        grid-row: auto;
+    }
+}
