@@ -1,0 +1,37 @@
+# Dokumentasi Deteksi & Perbaikan Error
+
+Berikut adalah daftar error yang ditemukan pada kode asli beserta perbaikannya:
+
+## 1. Syntax Error: Deklarasi Variabel
+- **Lokasi:** `proses-pendaftaran-2.php` (Bagian penanganan POST)
+- **Kode Asli:** `sekolah = $_POST['sekolah_asal'];`
+- **Jenis Error:** Syntax Error / Undefined Constant
+- **Penyebab:** Kurangnya tanda `$` sebelum nama variabel. PHP menganggap `sekolah` sebagai konstanta yang tidak didefinisikan.
+- **Perbaikan:** Menambahkan tanda `$` menjadi `$sekolah = $_POST['sekolah_asal'];`.
+
+## 2. Logic/Typo Error: Redirect URL
+- **Lokasi:** `proses-pendaftaran-2.php` (Blok `else` pada pengecekan query)
+- **Kode Asli:** `header('Location: indek.ph?status=gagal');`
+- **Jenis Error:** Runtime Error / Broken Link
+- **Penyebab:** Kesalahan penulisan ekstensi file (`.ph` bukannya `.php`) dan nama file (`indek` bukannya `index`).
+- **Perbaikan:** Mengubah menjadi `header('Location: index.php?status=gagal');`.
+
+## 3. Syntax Error: Deklarasi HTML
+- **Lokasi:** `form-daftar.php` (Baris pertama HTML)
+- **Kode Asli:** `<DOCTYPE >`
+- **Jenis Error:** Syntax Error (HTML)
+- **Penyebab:** Format deklarasi doctype tidak valid.
+- **Perbaikan:** Mengubah menjadi standar HTML5: `<!DOCTYPE html>`.
+
+## 4. Security Vulnerability: SQL Injection
+- **Lokasi:** `proses-pendaftaran-2.php` (Query SQL)
+- **Kode Asli:** `$sql = "INSERT INTO ... VALUE ('$nama', ...)"`
+- **Jenis Error:** Security Flaw
+- **Penyebab:** Menggunakan input user langsung ke dalam string SQL tanpa sanitasi atau prepared statements.
+- **Perbaikan:** Mengimplementasikan **Prepared Statements** (`mysqli_prepare` dan `mysqli_stmt_bind_param`) untuk memisahkan query SQL dari data.
+
+## 5. SQL Syntax Warning
+- **Lokasi:** `proses-pendaftaran-2.php`
+- **Kode Asli:** `VALUE`
+- **Keterangan:** Meskipun MySQL sering mentolerir `VALUE`, standar SQL yang benar untuk memasukkan banyak kolom adalah `VALUES`.
+- **Perbaikan:** Mengubah keyword menjadi `VALUES`.
