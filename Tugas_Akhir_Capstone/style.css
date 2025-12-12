@@ -1,0 +1,19 @@
+body { font-family: sans-serif; margin: 0; background-color: #f4f4f4; }
+header { background: #3498db; color: white; padding: 15px; display: flex; justify-content: space-between; align-items: center; }
+nav a { color: white; text-decoration: none; margin-left: 15px; font-weight: bold; }
+.container { width: 90%; max-width: 1000px; margin: 20px auto; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+.paket-grid { display: flex; gap: 20px; }
+.card { border: 1px solid #ddd; border-radius: 8px; overflow: hidden; width: 48%; }
+.card img { width: 100%; height: 200px; object-fit: cover; }
+.card-content { padding: 15px; }
+.btn { display: inline-block; background: #007bff; color: white; padding: 10px 15px; text-decoration: none; border-radius: 5px; }
+/* Form Styles */
+input[type=text], input[type=date], input[type=number] { width: 100%; padding: 8px; margin: 5px 0 15px; box-sizing: border-box; }
+.btn-save { background: blue; color: white; padding: 10px; border: none; cursor: pointer; }
+.btn-calc { background: green; color: white; padding: 10px; border: none; cursor: pointer; }
+.btn-reset { background: red; color: white; padding: 10px; border: none; cursor: pointer; text-decoration:none; display:inline-block;}
+/* Table Styles */
+table { border-collapse: collapse; margin-top: 20px; }
+th { background: #eee; }
+.btn-edit { background: #007bff; color: white; padding: 5px 10px; text-decoration: none; border-radius: 3px; }
+.btn-delete { background: #dc3545; color: white; padding: 5px 10px; text-decoration: none; border-radius: 3px; }
